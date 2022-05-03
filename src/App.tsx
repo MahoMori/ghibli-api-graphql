@@ -1,24 +1,50 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useEffect } from "react";
+import "./App.css";
+
+interface InitialQueryType {
+  id: string;
+  image: string;
+  movie_banner: string;
+  title: string;
+  description: string;
+  original_title: string;
+  original_title_romanised: string;
+  release_date: number;
+}
+
+const INITIAL_QUERY = `
+  query InitialQuery {
+    myQuery {
+      id
+      image
+      movie_banner
+      title
+      description
+      original_title
+      original_title_romanised
+      release_date
+    }
+  }
+`;
+
+const ENDPOINT = process.env.REACT_APP_API_ENDPOINT as string;
 
 function App() {
+  const [ghibliData, setGhibliData] = useState<InitialQueryType[]>([]);
+
+  useEffect(() => {
+    fetch(ENDPOINT, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ query: INITIAL_QUERY }),
+    })
+      .then((res) => res.json())
+      .then((data) => setGhibliData(data.data.myQuery));
+  }, []);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {ghibliData && ghibliData.map((data) => <p>{data.title}</p>)}
     </div>
   );
 }
