@@ -1,5 +1,5 @@
 module.exports = {
-  content: ["./src/components/Card.{js,jsx,ts,tsx}"],
+  content: ["./src/components/Card.tsx", "./src/App.tsx"],
   theme: {
     extend: {},
   },

@@ -1,15 +1,32 @@
 import React from "react";
 
-const Card = () => {
+import { InitialQueryType } from "../App";
+
+const Card = (data: InitialQueryType) => {
+  const {
+    image,
+    title,
+    description,
+    original_title,
+    original_title_romanised,
+    release_date,
+  } = data;
+
   return (
-    <div className="block p-6 max-w-sm bg-white rounded-lg border border-gray-200 shadow-md hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
-      <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-        Noteworthy technology acquisitions 2021
-      </h5>
-      <p className="font-normal text-gray-700 dark:text-gray-400">
-        Here are the biggest enterprise technology acquisitions of 2021 so far,
-        in reverse chronological order.
-      </p>
+    <div className="max-w-sm rounded overflow-hidden shadow-lg bg-white">
+      <img className="w-full" src={image} alt={title} />
+      <div className="px-6 py-4">
+        <div className="mb-2">
+          <p className="font-bold text-xl mb-2">{title}</p>
+          <p className="font-bold text-sm mb-2">
+            {original_title} ({original_title_romanised})
+          </p>
+          <p className="text-gray-500 underline underline-offset-4">
+            Release date: {release_date}
+          </p>
+        </div>
+        <p className="text-gray-700 text-left">{description}</p>
+      </div>
     </div>
   );
 };

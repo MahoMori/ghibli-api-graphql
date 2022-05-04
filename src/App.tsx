@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
 import "./App.css";
 
-interface InitialQueryType {
+import Card from "./components/Card";
+
+export interface InitialQueryType {
   id: string;
   image: string;
-  movie_banner: string;
   title: string;
   description: string;
   original_title: string;
@@ -17,7 +18,6 @@ const INITIAL_QUERY = `
     myQuery {
       id
       image
-      movie_banner
       title
       description
       original_title
@@ -43,8 +43,10 @@ function App() {
   }, []);
 
   return (
-    <div className="App">
-      {ghibliData && ghibliData.map((data) => <p>{data.title}</p>)}
+    <div className="App flex justify-center bg-orange-200">
+      <div className="p-10 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 gap-5">
+        {ghibliData && ghibliData.map((data) => <Card {...data} />)}
+      </div>
     </div>
   );
 }
