@@ -1,7 +1,7 @@
 module.exports = {
   content: [
-    "./src/components/Card.tsx",
     "./src/components/Modal.tsx",
+    "./src/components/Card.tsx",
     "./src/App.tsx",
   ],
   theme: {
