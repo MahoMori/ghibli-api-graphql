@@ -1,0 +1,30 @@
+type RootEntry {
+  description: String
+  director: String
+  id: String
+  image: String
+  locations: [String]
+  movie_banner: String
+  original_title: String
+  original_title_romanised: String
+  people: [String]
+  producer: String
+  release_date: Int
+  rt_score: Int
+  running_time: Int
+  species: [String]
+  title: String
+  url: String
+  vehicles: [String]
+}
+
+type Query {
+  myQuery: [RootEntry]
+    @rest(
+      endpoint: "https://ghibliapi.herokuapp.com/films"
+      headers: [
+        { name: "authentication", value: "$authentication_b461f85a58;" }
+      ]
+      configuration: "curl_import_config"
+    )
+}

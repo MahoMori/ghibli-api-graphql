@@ -1,0 +1,4 @@
+configurationset:
+  - configuration:
+      name: curl_import_config
+      authentication_b461f85a58: masina::stepzen.net+1000::ec4d8abbcaf82f0ea843b85c2ee27f679244b4e50387eb890cffc2e6d118bbeb

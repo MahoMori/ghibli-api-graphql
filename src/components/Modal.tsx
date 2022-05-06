@@ -68,22 +68,6 @@ const Modal: React.FC<ModalProps> = ({ data, modalOpen, setModalOpen }) => {
             <p className=" text-gray-500 font-normal text-center my-6 mx-6 dark:text-gray-200">
               Release date: {release_date}
             </p>
-            {/* <div className="flex-row md:flex items-center md:justify-between py-4 text-center mx-auto">
-              <div className="space-y-2 sm:space-x-2 my-4">
-                <button
-                  className="modal-close px-5 py-2 bg-gray-500 rounded-full text-gray-200 font-semibold hover:bg-gray-800 dark:hover:bg-gray-600 hover:text-gray-100 focus:outline-none"
-                  onClick={() => setModalOpen(false)}
-                >
-                  No, Keep it.
-                </button>
-                <button
-                  className="modal-close px-5 py-2 bg-red-500 dark:bg-gray-100 rounded-full text-gray-200 dark:text-gray-700 font-semibold hover:bg-red-600 dark:hover:bg-white hover:text-gray-100 dark:hover:text-gray-800 focus:outline-none"
-                  onClick={() => setModalOpen(false)}
-                >
-                  Yes, Delete media!
-                </button>
-              </div>
-            </div> */}
           </div>
         </div>
       </div>
