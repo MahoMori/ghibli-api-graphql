@@ -34,7 +34,7 @@ function App() {
   const [ghibliData, setGhibliData] = useState<InitialQueryType[]>([]);
 
   useEffect(() => {
-    fetch(LOCAL_ENDPOINT || NETLIFY_ENDPOINT, {
+    fetch(NETLIFY_ENDPOINT, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ query: INITIAL_QUERY }),
