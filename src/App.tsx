@@ -27,7 +27,7 @@ const INITIAL_QUERY = `
   }
 `;
 
-const LOCAL_ENDPOINT = process.env.REACT_APP_API_LOCAL_ENDPOINT as string;
+// const LOCAL_ENDPOINT = process.env.REACT_APP_API_LOCAL_ENDPOINT as string;
 const NETLIFY_ENDPOINT = process.env.REACT_APP_API_NETLIFY_ENDPOINT as string;
 
 function App() {
