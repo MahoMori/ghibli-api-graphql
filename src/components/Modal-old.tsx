@@ -1,15 +1,14 @@
 import React, { Dispatch, SetStateAction } from "react";
-import ReactDOM from "react-dom";
 
 import { InitialQueryType } from "../App";
 
 interface ModalProps {
   data: InitialQueryType;
   modalOpen: boolean;
-  handleModalOpen: () => void;
+  setModalOpen: Dispatch<SetStateAction<boolean>>;
 }
 
-const Modal: React.FC<ModalProps> = ({ data, modalOpen, handleModalOpen }) => {
+const Modal: React.FC<ModalProps> = ({ data, modalOpen, setModalOpen }) => {
   const {
     title,
     description,
@@ -18,18 +17,18 @@ const Modal: React.FC<ModalProps> = ({ data, modalOpen, handleModalOpen }) => {
     release_date,
   } = data;
 
-  return ReactDOM.createPortal(
-    <div className="flex items-center justify-center" onClick={handleModalOpen}>
+  return (
+    <div className="flex items-center justify-center h-screen">
       <div
         className={
           modalOpen
-            ? "modal opacity-100 fixed w-full h-full top-0 left-0 flex items-center justify-center"
+            ? "modal opacity-100 hover:pointer-events-none fixed w-full h-full top-0 left-0 flex items-center justify-center"
             : "opacity-0"
         }
       >
         <div
           className="modal-overlay absolute w-full h-full bg-gray-500 opacity-50"
-          onClick={handleModalOpen}
+          onClick={() => setModalOpen(false)}
         ></div>
 
         <div className="modal-container bg-gradient-to-r bg-white dark:bg-gray-800 max-w-lg mx-auto rounded shadow-lg z-50 overflow-y-auto">
@@ -37,7 +36,7 @@ const Modal: React.FC<ModalProps> = ({ data, modalOpen, handleModalOpen }) => {
             <div className="flex justify-end items-center pb-3">
               <div
                 className="modal-close cursor-pointer z-50 p-2"
-                onClick={handleModalOpen}
+                onClick={() => setModalOpen(false)}
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -45,7 +44,6 @@ const Modal: React.FC<ModalProps> = ({ data, modalOpen, handleModalOpen }) => {
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
-                  onClick={handleModalOpen}
                 >
                   <path
                     stroke-linecap="round"
@@ -73,8 +71,7 @@ const Modal: React.FC<ModalProps> = ({ data, modalOpen, handleModalOpen }) => {
           </div>
         </div>
       </div>
-    </div>,
-    document.body
+    </div>
   );
 };
 

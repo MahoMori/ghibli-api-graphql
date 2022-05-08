@@ -9,26 +9,31 @@ const Card = (data: InitialQueryType) => {
 
   const [modalOpen, setModalOpen] = useState<boolean>(false);
 
+  const handleModalOpen = () => {
+    modalOpen ? setModalOpen(false) : setModalOpen(true);
+  };
+
   return (
-    <div className="lg:w-1/3 sm:w-1/2 p-4 ">
-      <div className="flex relative">
-        <img
-          src={image}
-          alt={title}
-          className="inset-0 h-full w-full object-cover object-center rounded-lg opacity-100 hover:opacity-75 cursor-pointer"
-          onClick={() => {
-            setModalOpen(true);
-          }}
-        />
-        {modalOpen && (
-          <Modal
-            data={data}
-            modalOpen={modalOpen}
-            setModalOpen={setModalOpen}
+    <>
+      <div className="lg:w-1/3 sm:w-1/2 p-4 ">
+        <div className="flex relative">
+          <img
+            src={image}
+            alt={title}
+            className="inset-0 h-full w-full object-cover object-center rounded-lg opacity-100 hover:opacity-75 cursor-pointer"
+            onClick={handleModalOpen}
           />
-        )}
+        </div>
       </div>
-    </div>
+
+      {modalOpen && (
+        <Modal
+          data={data}
+          modalOpen={modalOpen}
+          handleModalOpen={handleModalOpen}
+        />
+      )}
+    </>
   );
 };
 
