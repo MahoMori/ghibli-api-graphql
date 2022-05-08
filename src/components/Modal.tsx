@@ -1,4 +1,4 @@
-import React, { Dispatch, SetStateAction } from "react";
+import React from "react";
 import ReactDOM from "react-dom";
 
 import { InitialQueryType } from "../App";
