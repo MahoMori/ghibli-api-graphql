@@ -2,7 +2,7 @@ module.exports = {
   content: [
     "./src/components/Card.tsx",
     "./src/App.tsx",
-    "./node_modules/tw-elements/dist/js/**/*.js",
+    "./src/components/Modal.tsx",
   ],
   theme: {
     extend: {},

@@ -27,7 +27,7 @@ const INITIAL_QUERY = `
   }
 `;
 
-const ENDPOINT = process.env.REACT_APP_API_ENDPOINT as string;
+const ENDPOINT = process.env.REACT_APP_API_LOCAL_ENDPOINT as string;
 
 function App() {
   const [ghibliData, setGhibliData] = useState<InitialQueryType[]>([]);
@@ -43,18 +43,13 @@ function App() {
   }, []);
 
   return (
-    // <div className="App flex justify-center bg-orange-200">
-    //   <div className="p-10 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 gap-5">
-    //     {ghibliData && ghibliData.map((data) => <Card {...data} />)}
-    //   </div>
-    // </div>
-
     <div className="px-10 py-8 mx-auto items-center bg-teal-300 dark:bg-gray-800">
       <h3 className="p-4 text-3xl text-semibold text-black dark:text-white">
         Studio Ghibli Database
       </h3>
       <div className="flex flex-wrap">
-        {ghibliData && ghibliData.map((data) => <Card {...data} />)}
+        {ghibliData &&
+          ghibliData.map((data) => <Card key={data.title} {...data} />)}
       </div>
     </div>
   );
