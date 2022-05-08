@@ -27,14 +27,14 @@ const INITIAL_QUERY = `
   }
 `;
 
-// const LOCAL_ENDPOINT = process.env.REACT_APP_API_LOCAL_ENDPOINT as string;
-const NETLIFY_ENDPOINT = process.env.REACT_APP_API_NETLIFY_ENDPOINT as string;
+const LOCAL_ENDPOINT = process.env.REACT_APP_API_LOCAL_ENDPOINT as string;
+// const NETLIFY_ENDPOINT = process.env.REACT_APP_API_NETLIFY_ENDPOINT as string;
 
 function App() {
   const [ghibliData, setGhibliData] = useState<InitialQueryType[]>([]);
 
   useEffect(() => {
-    fetch(NETLIFY_ENDPOINT, {
+    fetch(LOCAL_ENDPOINT, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ query: INITIAL_QUERY }),
